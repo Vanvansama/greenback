@@ -19,6 +19,7 @@ Route::get('hello/:name', 'index/hello');
 Route::post('admin/login', 'admin/login');
 
 Route::get('suggestion', 'suggestion/index');
+Route::post('suggestion', 'suggestion/add');
 
 Route::get('openId', 'index/openId');
 
@@ -26,7 +27,8 @@ Route::get('user/:userId', 'user/index');
 
 Route::get('records/:userId', 'record/index');
 
-Route::put('bike/:userId', 'bike/index');
+Route::put('bike/:bikeId', 'bike/update');
+Route::get('/api/bikes', 'bike/index');
 
 Route::get('reports', 'report/index');
 Route::put('reports/:reportId', 'report/update');
