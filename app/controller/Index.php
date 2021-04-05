@@ -20,20 +20,16 @@ class Index extends BaseController
     public function openId($code, $app_id)
     {
 
-        // $loginUrl = "https://api.weixin.qq.com/sns/jscode2session?appid=wx205209dddadfb39b&secret=".$this->secret."&js_code=".$this->code."&grant_type=authorization_code";
-        // $res = file_get_contents($loginUrl);
-        // $wxres = json_decode($res,true);
-        // echo $wxres;
-
-        // $user = Db::table('user')->where('id', $wxres->openid)->find();
+        $loginUrl = "https://api.weixin.qq.com/sns/jscode2session?appid=wx205209dddadfb39b&secret=e46366afdade4aa8d9882fd39de9f0bf&js_code=$code&grant_type=authorization_code";
+        $res = file_get_contents($loginUrl);
+        $wxres = json_decode($res,true);
         
-        // if ($user) {
-            
-        // } else {
-        //     Db::table('user')->save(['username' => '', 'password' => '', 'sex' => '', 'id' => $wxres->openid, 'amount' => 0, college => '' ]);
-        // }
+        $user = Db::table('user')->where('id', $wxres['openid'])->find();
+        if ($user == NULL) {
+            Db::table('user')->save(['username' => '', 'password' => '', 'sex' => '', 'id' => $wxres['openid'], 'amout' => 0, 'college' => '' ]);
+        }
 
-        $data = ['openId' => 'testId', 'unionId' => 'testId'];
+        $data = ['openId' => $wxres['openid'], 'unionId' => 'testId'];
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         return json($res);
     }
