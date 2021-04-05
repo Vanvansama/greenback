@@ -17,6 +17,7 @@ class Bike extends BaseController
 
     public function update($bikeId, $mode)
     {
+        $userId = 'testId';
         $data = [];
         $bike = Db::table('bike')->where('id', $bikeId)->find();
         if ($bike['state'] != $mode) {

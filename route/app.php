@@ -32,3 +32,7 @@ Route::get('/api/bikes', 'bike/index');
 
 Route::get('reports', 'report/index');
 Route::put('reports/:reportId', 'report/update');
+Route::post('report', 'report/save');
+
+Route::post('exception', 'exception/save');
+Route::get('/api/returns', 'exception/index');

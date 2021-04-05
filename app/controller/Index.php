@@ -2,6 +2,8 @@
 namespace app\controller;
 
 use app\BaseController;
+use think\facade\Db;
+// use think\facade\Session;
 
 class Index extends BaseController
 {
@@ -15,8 +17,22 @@ class Index extends BaseController
         return 'hello,' . $name;
     }
 
-    public function openId($code)
+    public function openId($code, $app_id)
     {
+
+        // $loginUrl = "https://api.weixin.qq.com/sns/jscode2session?appid=wx205209dddadfb39b&secret=".$this->secret."&js_code=".$this->code."&grant_type=authorization_code";
+        // $res = file_get_contents($loginUrl);
+        // $wxres = json_decode($res,true);
+        // echo $wxres;
+
+        // $user = Db::table('user')->where('id', $wxres->openid)->find();
+        
+        // if ($user) {
+            
+        // } else {
+        //     Db::table('user')->save(['username' => '', 'password' => '', 'sex' => '', 'id' => $wxres->openid, 'amount' => 0, college => '' ]);
+        // }
+
         $data = ['openId' => 'testId', 'unionId' => 'testId'];
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         return json($res);
