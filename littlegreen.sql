@@ -20,12 +20,18 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for bike
 -- ----------------------------
-DROP TABLE IF EXISTS `bike`;
-CREATE TABLE `bike`  (
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `state` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `location` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+--DROP TABLE IF EXISTS `bike`;
+--CREATE TABLE `bike`  (
+--  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+--  `state` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+--  `location` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+--) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+CREATE TABLE `littlegreen`.`biike` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `state` VARCHAR(45) NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`));
 
 -- ----------------------------
 -- Records of bike

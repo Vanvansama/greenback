@@ -26,6 +26,9 @@ class Report extends BaseController
         return json($res);
     }
 
+    // TODO
+    // userID 已经传openid 给你
+    // imglist发现没有成功insert进去 前端传的是一个数组
     public function save($address, $bikeId,$errorInfo,$imgList, $type)
     {
         $userId = 'testId';

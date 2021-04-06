@@ -24,6 +24,8 @@ class Bike extends BaseController
             Db::name('bike')
                 ->where('id', $bikeId)
                 ->update(['state' => $mode]);
+            // TODO
+            // 这里的begin_addr 可以用bike表的location
             Db::name('record')
                 ->save(['begin_addr' => '北京理工大学珠海学院第三饭堂', 'end_addr' => '北京理工大学珠海学院34栋宿舍', 'date' => time(), 'id' => 'testID']);
             $data = ['state' => 'success'];

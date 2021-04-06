@@ -14,12 +14,12 @@ class Suggestion extends BaseController
         return json($res);
     }
 
-    public function add($suggestion)
+    public function add($suggestion,$openId)
     {
         $data = [];
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         Db::name('suggestion')
-            ->save(['detail' => $suggestion]);
+            ->save(['detail' => $suggestion,'userId' => $openId]);
         return json($res);
     }
 }
