@@ -121,6 +121,21 @@ CREATE TABLE `user`  (
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+
+CREATE TABLE `admin` (
+  `id` int NOT NULL,
+  `username` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `sex` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('root', 'root', '', '', 0.0, '1', NULL);
@@ -128,3 +143,6 @@ INSERT INTO `user` VALUES ('刘凡', '12345', 'male', '13192269125', 10.0, 'test
 INSERT INTO `user` VALUES ('admin', 'admin', NULL, NULL, NULL, '', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+

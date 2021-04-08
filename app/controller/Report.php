@@ -10,7 +10,8 @@ class Report extends BaseController
     public function index()
     {
         // $data = [['id' => '123', 'car_id' => '123', 'address' => '北京理工大学珠海学院第三饭堂', 'type' => '0', 'desc' => '车链子坏了，接不上去2', 'status' => '0']];
-
+        //TODO
+        // 表漏了一个status属性 0 代表未解决 1 代表解决 'status' => '0'
         $data = Db::table('report')
             ->select();
 
