@@ -8,9 +8,9 @@ use think\facade\Db;
 
 class Exception extends BaseController
 {
-    public function save($address, $bikeId, $errorInfo, $imgList)
+    public function save($address, $bikeId, $errorInfo, $imgList, $openId)
     {
-        $userId = 'testId';
+        $userId = $openId;
         Db::table('exception')->save(['address' => $address, 'bikeId' => $bikeId, 'errorInfo' => $errorInfo, 'imgList' => $imgList, 'userId' => $userId ]);
 
         $data = ['status' => 'success'];

@@ -61,10 +61,11 @@ INSERT INTO `exception` VALUES ('', 'testId', '', '', 'testId');
 -- ----------------------------
 DROP TABLE IF EXISTS `record`;
 CREATE TABLE `record`  (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `begin_addr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `end_addr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `date` datetime(0) NULL DEFAULT NULL,
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `bikeId` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `userId` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 

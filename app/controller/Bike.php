@@ -15,9 +15,9 @@ class Bike extends BaseController
         return json($res);
     }
 
-    public function update($bikeId, $mode)
+    public function update($bikeId, $mode, $openId)
     {
-        $userId = 'testId';
+        $userId = $openId;
         $data = [];
         $bike = Db::table('bike')->where('id', $bikeId)->find();
         if ($bike['state'] != $mode) {
@@ -27,7 +27,7 @@ class Bike extends BaseController
             // TODO
             // 这里的begin_addr 可以用bike表的location
             Db::name('record')
-                ->save(['begin_addr' => '北京理工大学珠海学院第三饭堂', 'end_addr' => '北京理工大学珠海学院34栋宿舍', 'date' => time(), 'id' => 'testID']);
+                ->save(['begin_addr' => '北京理工大学珠海学院第三饭堂', 'end_addr' => '北京理工大学珠海学院34栋宿舍', 'date' => time(), 'bikeId' => $bikeId, 'userId' => $openId]);
             $data = ['state' => 'success'];
         } else {
             $data = ['state' => 'failed'];
