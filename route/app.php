@@ -23,7 +23,7 @@ Route::post('suggestion', 'suggestion/add');
 
 Route::get('openId', 'index/openId');
 
-Route::get('user/:userId', 'user/index');
+Route::post('user/', 'user/index');
 
 Route::get('records/:userId', 'record/index');
 
