@@ -9,13 +9,9 @@ class Report extends BaseController
 {
     public function index()
     {
-        // $data = [['id' => '123', 'car_id' => '123', 'address' => '北京理工大学珠海学院第三饭堂', 'type' => '0', 'desc' => '车链子坏了，接不上去2', 'status' => '0']];
-        //TODO
         // 表漏了一个status属性 0 代表未解决 1 代表解决 'status' => '0'
         $data = Db::table('report')
             ->select();
-
-
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         return json($res);
     }
@@ -27,9 +23,6 @@ class Report extends BaseController
         return json($res);
     }
 
-    // TODO
-    // userID 已经传openid 给你
-    // imglist发现没有成功insert进去 前端传的是一个数组
     public function save($address, $bikeId, $errorInfo, $imgList, $type, $openId)
     {
         $userId = $openId;

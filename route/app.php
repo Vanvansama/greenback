@@ -25,7 +25,7 @@ Route::get('openId', 'index/openId');
 
 Route::post('user/', 'user/index');
 
-Route::get('records/:userId', 'record/index');
+Route::post('records', 'record/index');
 
 Route::put('bike/:bikeId', 'bike/update');
 Route::get('/api/bikes', 'bike/index');

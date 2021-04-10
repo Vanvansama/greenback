@@ -26,7 +26,7 @@ class Index extends BaseController
         
         $user = Db::table('user')->where('id', $wxres['openid'])->find();
         if ($user == NULL) {
-            Db::table('user')->save(['username' => '', 'password' => '', 'sex' => '', 'id' => $wxres['openid'], 'amout' => 0, 'college' => '' ]);
+            Db::table('user')->save(['username' => '', 'password' => '', 'sex' => '', 'id' => $wxres['openid'], 'amout' => 100, 'college' => '' ]);
         }
 
         $data = ['openId' => $wxres['openid'], 'unionId' => 'testId'];
