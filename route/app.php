@@ -35,4 +35,5 @@ Route::put('reports/:reportId', 'report/update');
 Route::post('report', 'report/save');
 
 Route::post('exception', 'exception/save');
-Route::get('/api/returns', 'exception/index');
+Route::get('returns', 'exception/index');
+Route::put('returns/:exceptionId', 'exception/update');

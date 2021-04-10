@@ -11,8 +11,7 @@ class User extends BaseController
     
     public function index($userId)
     {
-        $user = Db::table('user')->where('id', $userId)->find();
-        // var_dump($userId, $user);
+        $user = Db::table('user')->whereOr([['id', '=', $userId],['username', 'like', $userId]])->find();
         $data = $user;
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         return json($res);

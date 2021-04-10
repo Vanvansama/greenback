@@ -11,12 +11,15 @@ class Admin extends BaseController
     {
         // TODO
         // 新建了一张admin表 查那里的
-        $data = [];
-        $admin = Db::table('user')->where('username', $userName)->find();
+        $admin = Db::table('user')->where([['username', '=', $userName],['password', '=', $password]])->find();
         if ($admin != null) {
+            $data = ['status' => 'success'];
             $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
-            return json($res);
+        } else {
+            $data = ['status' => 'failed'];
+            $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         }
+        return json($res);
         
     }
 }

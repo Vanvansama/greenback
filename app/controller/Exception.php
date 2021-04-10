@@ -24,4 +24,12 @@ class Exception extends BaseController
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         return json($res);
     }
+
+    public function update($exceptionId)
+    {
+        $data = [];
+        Db::table('exception')->where('id', $exceptionId)->update(['status' => 1]);
+        $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
+        return json($res);
+    }
 }
