@@ -37,7 +37,7 @@ CREATE TABLE `bike` (
 -- ----------------------------
 -- Records of bike
 -- ----------------------------
-INSERT INTO `bike` VALUES ('1', 'close', '1234');
+INSERT INTO `bike` VALUES (1, 'close', '1234');
 
 -- ----------------------------
 -- Table structure for exception
@@ -66,13 +66,14 @@ CREATE TABLE `record`  (
   `end_addr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `date` datetime(0) NULL DEFAULT NULL,
   `bikeId` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `userId` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+  `userId` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of record
 -- ----------------------------
-INSERT INTO `record` VALUES ('北京理工大学珠海学院第三饭堂', '北京理工大学珠海学院34栋宿舍', '0000-00-00 00:00:00', 'testId', '');
+INSERT INTO `record` VALUES (1, '北京理工大学珠海学院第三饭堂', '北京理工大学珠海学院34栋宿舍', '0000-00-00 00:00:00', 'testId', '');
 
 -- ----------------------------
 -- Table structure for report

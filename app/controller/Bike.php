@@ -15,22 +15,45 @@ class Bike extends BaseController
         return json($res);
     }
 
-    public function update($bikeId, $mode, $openId)
+    public function update($bikeId, $openId, $address)
     {
         $userId = $openId;
         $data = [];
         $bike = Db::table('bike')->where('id', $bikeId)->find();
-        if ($bike['state'] != $mode) {
-            Db::name('bike')
-                ->where('id', $bikeId)
-                ->update(['state' => $mode]);
-            // TODO
-            // 这里的begin_addr 可以用bike表的location
-            Db::name('record')
-                ->save(['begin_addr' => '北京理工大学珠海学院第三饭堂', 'end_addr' => '北京理工大学珠海学院34栋宿舍', 'date' => time(), 'bikeId' => $bikeId, 'userId' => $openId]);
-            $data = ['state' => 'success'];
+        if ($bike['state'] == 'close' && $bike['userId'] == NULL) {
+            Db::startTrans();
+            try {
+                Db::name('bike')
+                    ->where('id', $bikeId)
+                    ->update(['state' => 'open', 'location' => $address, 'userId' => $openId]);
+                Db::name('record')
+                    ->save(['begin_addr' => $address, 'date' => date("Y-m-d H:i:s"), 'bikeId' => $bikeId, 'userId' => $openId]);
+                Db::commit();
+                $data = ['status' => 'open-success'];
+            } catch (\Exception $e) {
+                // 回滚事务
+                var_dump($e);
+                Db::rollback();
+                $data = ['status' => 'fail'];
+            }
+        } else if ($bike['state'] == 'open' && $bike['userId'] == $openId) {
+            Db::startTrans();
+            try {
+                Db::name('bike')
+                    ->where('id', $bikeId)
+                    ->update(['state' => 'close', 'location' => $address, 'userId' => NULL]);
+                Db::name('record')
+                    ->where([['bikeId', '=', $bikeId], ['userId', '=', $openId], ['state', '=', 1]])
+                    ->update(['end_addr' => $address, 'state' => 0, 'date' => date("Y-m-d H:i:s")]);
+                Db::commit();
+                $data = ['status' => 'close-success'];
+            } catch (\Exception $e) {
+                // 回滚事务
+                Db::rollback();
+                $data = ['state' => 'fail'];
+            }
         } else {
-            $data = ['state' => 'failed'];
+            $data = ['status' => 'failed'];
         }
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         return json($res);
