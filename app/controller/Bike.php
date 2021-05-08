@@ -11,7 +11,6 @@ class Bike extends BaseController
     {
         $data = [['在借' => '300'],["明德"=>"88"],["弘毅"=>"54"],["一饭"=>"15"],["二饭"=>"75"],["三饭"=>"68"],["四饭"=>"45"],["五饭"=>"67"]];
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
-        // $admin = Db::table('user')->where('username', 'root')->find();
         return json($res);
     }
 
@@ -45,6 +44,12 @@ class Bike extends BaseController
                 Db::name('record')
                     ->where([['bikeId', '=', $bikeId], ['userId', '=', $openId], ['state', '=', 1]])
                     ->update(['end_addr' => $address, 'state' => 0, 'date' => date("Y-m-d H:i:s")]);
+                $user = Db::name('user')
+                    ->where('id', $openId)
+                    ->find();
+                Db::name('user')
+                    ->where('id', $openId)
+                    ->update(['amout' => ($user['amout'] - 1)]);
                 Db::commit();
                 $data = ['status' => 'close-success'];
             } catch (\Exception $e) {
