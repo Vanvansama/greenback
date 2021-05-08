@@ -9,7 +9,7 @@ class Suggestion extends BaseController
 {
     public function index()
     {
-        $data = [];
+        $data = Db::name('suggestion')->select();
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];
         return json($res);
     }
