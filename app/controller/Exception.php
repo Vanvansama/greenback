@@ -11,7 +11,7 @@ class Exception extends BaseController
     public function save($address, $bikeId, $errorInfo, $imgList, $openId)
     {
         $userId = $openId;
-        Db::table('exception')->save(['address' => $address, 'bikeId' => $bikeId, 'errorInfo' => $errorInfo, 'imgList' => implode(',', $imgList), 'userId' => $userId ]);
+        Db::table('exception')->save(['address' => $address, 'bikeId' => $bikeId, 'errorInfo' => $errorInfo, 'imgList' => implode(',', $imgList), 'userId' => $userId, 'date' => date("Y-m-d H:i:s") ]);
 
         $data = ['status' => 'success'];
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];

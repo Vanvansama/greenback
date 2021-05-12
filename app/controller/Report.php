@@ -27,7 +27,7 @@ class Report extends BaseController
     public function save($address, $bikeId, $errorInfo, $imgList, $type, $openId)
     {
         $userId = $openId;
-        Db::table('report')->save(['address' => $address, 'bikeId' => $bikeId, 'errorInfo' => $errorInfo, 'imgList' => implode(',', $imgList), 'userId' => $userId, 'type' => $type ]);
+        Db::table('report')->save(['address' => $address, 'bikeId' => $bikeId, 'errorInfo' => $errorInfo, 'imgList' => implode(',', $imgList), 'userId' => $userId, 'type' => $type, 'date' => date("Y-m-d H:i:s") ]);
         
         $data = ['status' => 'success'];
         $res = ['status' => 'success', 'data' => $data, "message" => "", "code" => "200" ];

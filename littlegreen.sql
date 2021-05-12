@@ -160,3 +160,7 @@ INSERT INTO `user` VALUES ('root', 'root', 'male', '', 0.0, '1', NULL);
 INSERT INTO `user` VALUES ('刘凡', '12345', 'male', '13192269125', 0.0, 'oUd-C4jeaqBODgqY3nSDyPH4VRzY', '计算机');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+alter table exception add COLUMN date datetime;
+alter table report add COLUMN date datetime;

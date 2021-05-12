@@ -24,6 +24,7 @@ Route::post('suggestion', 'suggestion/add');
 Route::get('openId', 'index/openId');
 
 Route::post('user/', 'user/index');
+Route::post('user/updateMoney', 'user/updateMoney');
 
 Route::post('records', 'record/index');
 
